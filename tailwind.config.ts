@@ -13,7 +13,15 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        heading: ['Orbitron', 'Space Grotesk', 'sans-serif'],
+        body: ['DM Sans', 'sans-serif'],
+      },
       colors: {
+        'brand-blue-dark': 'hsl(var(--brand-blue-dark))',
+        'brand-blue-medium': 'hsl(var(--brand-blue-medium))',
+        'brand-blue-light': 'hsl(var(--brand-blue-light))',
+        'brand-neutral': 'hsl(var(--brand-neutral))',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
