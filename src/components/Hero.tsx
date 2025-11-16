@@ -24,7 +24,7 @@ const Hero = () => {
             <motion.img
               src={logo}
               alt="Build2Automate"
-              className="w-full max-w-[280px] sm:max-w-md mx-auto lg:mx-0"
+              className="w-full max-w-[280px] sm:max-w-md"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
