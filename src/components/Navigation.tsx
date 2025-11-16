@@ -16,8 +16,8 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b-2 border-border">
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -25,7 +25,7 @@ const Navigation = () => {
             transition={{ duration: 0.5 }}
           >
             <a href="#" className="flex items-center">
-              <img src={logo} alt="Build2Automate" className="h-12" />
+              <img src={logo} alt="Build2Automate" className="h-8 sm:h-10 md:h-12" />
             </a>
           </motion.div>
 

@@ -31,22 +31,22 @@ const steps = [
 
 const HowWeWork = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute bottom-0 left-0 w-96 h-96 border-2 border-border/20 -rotate-12" />
+      <div className="absolute bottom-0 left-0 w-48 h-48 sm:w-96 sm:h-96 border-2 border-border/20 -rotate-12" />
       
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-heading font-bold text-primary uppercase mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary uppercase mb-4 sm:mb-6">
             How We Work
           </h2>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto font-body">
+          <p className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto font-body px-4">
             A proven process that delivers results. From initial consultation to ongoing support.
           </p>
         </motion.div>

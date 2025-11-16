@@ -24,24 +24,24 @@ const caseStudies = [
 
 const CaseStudies = () => {
   return (
-    <section className="py-24 bg-card relative">
-      <div className="container mx-auto px-6">
+    <section className="py-12 sm:py-16 md:py-24 bg-card relative">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-heading font-bold text-primary uppercase mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary uppercase mb-4 sm:mb-6">
             Real-World Impact
           </h2>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto font-body">
+          <p className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto font-body px-4">
             See how we've helped businesses eliminate bottlenecks and scale efficiently.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {caseStudies.map((study, index) => (
             <motion.div
               key={index}
@@ -51,7 +51,7 @@ const CaseStudies = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="bg-background border-2 border-border p-8 h-full hover:border-accent transition-all relative overflow-hidden">
+              <div className="bg-background border-2 border-border p-6 sm:p-8 h-full hover:border-accent transition-all relative overflow-hidden">
                 {/* Background Accent */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 -translate-y-8 translate-x-8 rotate-45" />
                 
@@ -63,13 +63,13 @@ const CaseStudies = () => {
 
                   {/* Metric */}
                   <div className="mb-4">
-                    <div className="text-3xl font-heading font-bold text-accent mb-1 uppercase tracking-tight">
+                    <div className="text-2xl sm:text-3xl font-heading font-bold text-accent mb-1 uppercase tracking-tight">
                       {study.metric}
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-heading font-bold text-primary mb-4 uppercase">
+                  <h3 className="text-lg sm:text-xl font-heading font-bold text-primary mb-3 sm:mb-4 uppercase">
                     {study.title}
                   </h3>
 
