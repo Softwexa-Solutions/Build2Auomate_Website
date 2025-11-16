@@ -56,7 +56,7 @@ const HowWeWork = () => {
           {/* Horizontal Line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-border transform -translate-y-1/2" />
           
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
             {steps.map((step, index) => (
               <motion.div
                 key={index}
@@ -64,10 +64,10 @@ const HowWeWork = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
+                className="relative flex"
               >
                 {/* Step Card */}
-                <div className="bg-card border-2 border-border p-6 relative z-10 hover:border-accent transition-all group">
+                <div className="bg-card border-2 border-border p-6 relative z-10 hover:border-accent transition-all group flex flex-col w-full min-h-[280px]">
                   {/* Icon Circle */}
                   <div className="w-16 h-16 bg-primary mx-auto mb-4 flex items-center justify-center relative">
                     <step.icon className="w-8 h-8 stroke-[2.5] text-primary-foreground" />
@@ -83,7 +83,7 @@ const HowWeWork = () => {
                   <h3 className="text-xl font-heading font-bold text-primary mb-3 uppercase text-center">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-foreground/70 font-body text-center leading-relaxed">
+                  <p className="text-sm text-foreground/70 font-body text-center leading-relaxed flex-grow">
                     {step.description}
                   </p>
                 </div>

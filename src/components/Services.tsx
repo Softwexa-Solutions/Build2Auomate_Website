@@ -18,11 +18,6 @@ const services = [
     description: "Connect your tools and eliminate repetitive tasks. Save hours every week with intelligent automation.",
   },
   {
-    icon: User,
-    title: "Personal Workflows",
-    description: "Streamline your individual productivity. Custom automations for entrepreneurs and professionals.",
-  },
-  {
     icon: Zap,
     title: "Integration Solutions",
     description: "Seamlessly connect your existing tools and platforms. One unified system that works for you.",
@@ -51,7 +46,7 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {services.map((service, index) => (
             <motion.div
               key={index}
