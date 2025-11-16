@@ -26,22 +26,22 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-24 bg-card relative">
+    <section className="py-12 sm:py-16 md:py-24 bg-card relative">
       {/* Geometric Background */}
-      <div className="absolute top-0 right-0 w-64 h-64 border border-border/30 rotate-12 opacity-50" />
+      <div className="absolute top-0 right-0 w-32 h-32 sm:w-64 sm:h-64 border border-border/30 rotate-12 opacity-50" />
       
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-heading font-bold text-primary uppercase mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary uppercase mb-4 sm:mb-6">
             What We Build
           </h2>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto font-body">
+          <p className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto font-body px-4">
             Custom solutions designed around your specific needs. No templates, no compromises.
           </p>
         </motion.div>
