@@ -21,18 +21,18 @@ const Footer = () => {
           </div>
 
           {/* Links */}
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <a
-              href="#"
+              href="/privacy-policy"
               className="text-primary-foreground/80 hover:text-primary-foreground font-body text-sm transition-colors"
             >
-              Privacy
+              Privacy Policy
             </a>
             <a
-              href="#"
+              href="/terms-of-service"
               className="text-primary-foreground/80 hover:text-primary-foreground font-body text-sm transition-colors"
             >
-              Terms
+              Terms of Service
             </a>
           </div>
         </div>
