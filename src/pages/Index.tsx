@@ -6,7 +6,8 @@ import Services from "@/components/Services";
 import CaseStudies from "@/components/CaseStudies";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
-import EmailJSTest from "@/components/EmailJSTest";
+// Removed EmailJSTest import
+import FAQ from "@/components/FAQ";
 
 export default function Index() {
   return (
@@ -26,7 +27,10 @@ export default function Index() {
         <div id="why-us">
           <CompanyValues />
         </div>
-        <EmailJSTest />
+        <div id="faq">
+          <FAQ />
+        </div>
+        {/* Removed EmailJSTest component */}
         <div id="contact">
           <ContactCTA />
         </div>
