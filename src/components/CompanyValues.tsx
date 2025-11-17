@@ -46,24 +46,28 @@ const CompanyValues = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
           {values.map((value, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
+              className="group relative"
+              whileHover={{ y: -5 }}
             >
-              <div className="flex gap-4 sm:gap-6 bg-card border-2 border-border p-6 sm:p-8 hover:border-accent transition-all h-full">
+              <div className="flex gap-3 sm:gap-4 lg:gap-6 bg-card border-2 border-border p-4 sm:p-6 lg:p-8 hover:border-accent transition-all h-full relative overflow-hidden">
+                {/* Background accent for hover effect */}
+                <div className="absolute inset-0 bg-accent opacity-0 group-hover:opacity-5 transition-opacity" />
+                
                 {/* Icon with Check Badge */}
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 flex items-center justify-center relative">
-                    <value.icon className="w-6 h-6 sm:w-8 sm:h-8 stroke-[2.5] text-primary" />
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-accent flex items-center justify-center">
+                <div className="flex-shrink-0 relative z-10">
+                  <div className="w-10 h-10 sm:w-12 lg:w-16 h-10 sm:h-12 lg:h-16 bg-primary/10 flex items-center justify-center relative">
+                    <value.icon className="w-5 h-5 sm:w-6 lg:w-8 h-5 sm:h-6 lg:h-8 stroke-[2.5] text-primary" />
+                    <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 bg-accent flex items-center justify-center">
                       <svg
-                        className="w-2 h-2 sm:w-3 sm:h-3 text-background"
+                        className="w-1.5 h-1.5 sm:w-2 lg:w-3 h-1.5 sm:h-2 lg:h-3 text-background"
                         fill="none"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -78,11 +82,11 @@ const CompanyValues = () => {
                 </div>
 
                 {/* Content */}
-                <div className="flex-1">
-                  <h3 className="text-lg sm:text-xl font-heading font-bold text-primary mb-2 sm:mb-3 uppercase">
+                <div className="flex-1 relative z-10">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-heading font-bold text-primary mb-1 sm:mb-2 lg:mb-3 uppercase">
                     {value.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-foreground/70 font-body leading-relaxed">
+                  <p className="text-xs sm:text-sm lg:text-base text-foreground/70 font-body leading-relaxed">
                     {value.description}
                   </p>
                 </div>

@@ -1,4 +1,4 @@
-import logo from "@/assets/build2automate-logo.png";
+import logo from "@/assets/Lockup-WHITE-Logo.png";
 
 const Footer = () => {
   return (

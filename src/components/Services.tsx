@@ -46,7 +46,7 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -56,20 +56,20 @@ const Services = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="bg-background border-2 border-border p-8 h-full transition-all hover:border-accent hover:shadow-lg">
+              <div className="bg-background border-2 border-border p-4 sm:p-6 lg:p-8 h-full transition-all hover:border-accent hover:shadow-lg">
                 {/* Icon */}
-                <div className="mb-6">
-                  <div className="w-16 h-16 bg-primary/10 flex items-center justify-center relative">
-                    <service.icon className="w-8 h-8 stroke-[2.5] text-primary" />
-                    <div className="absolute -top-2 -right-2 w-6 h-6 border-2 border-accent" />
+                <div className="mb-3 sm:mb-4 lg:mb-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-primary/10 flex items-center justify-center relative">
+                    <service.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 stroke-[2.5] text-primary" />
+                    <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 border-2 border-accent" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-heading font-bold text-primary mb-4 uppercase tracking-tight">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-heading font-bold text-primary mb-2 sm:mb-3 lg:mb-4 uppercase tracking-tight">
                   {service.title}
                 </h3>
-                <p className="text-foreground/70 font-body leading-relaxed">
+                <p className="text-foreground/70 font-body text-sm sm:text-base leading-relaxed">
                   {service.description}
                 </p>
 

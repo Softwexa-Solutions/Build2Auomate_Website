@@ -56,7 +56,7 @@ const HowWeWork = () => {
           {/* Horizontal Line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-border transform -translate-y-1/2" />
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-4">
             {steps.map((step, index) => (
               <motion.div
                 key={index}
@@ -67,23 +67,23 @@ const HowWeWork = () => {
                 className="relative flex"
               >
                 {/* Step Card */}
-                <div className="bg-card border-2 border-border p-6 relative z-10 hover:border-accent transition-all group flex flex-col w-full min-h-[280px]">
+                <div className="bg-card border-2 border-border p-4 sm:p-5 lg:p-6 relative z-10 hover:border-accent transition-all group flex flex-col w-full min-h-[220px] sm:min-h-[240px]">
                   {/* Icon Circle */}
-                  <div className="w-16 h-16 bg-primary mx-auto mb-4 flex items-center justify-center relative">
-                    <step.icon className="w-8 h-8 stroke-[2.5] text-primary-foreground" />
+                  <div className="w-12 h-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 bg-primary mx-auto mb-3 sm:mb-4 flex items-center justify-center relative">
+                    <step.icon className="w-6 h-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 stroke-[2.5] text-primary-foreground" />
                     {/* Number Badge */}
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-accent flex items-center justify-center">
-                      <span className="text-xs font-heading font-bold text-background">
+                    <div className="absolute -top-1 -right-1 w-6 h-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 bg-accent flex items-center justify-center">
+                      <span className="text-[10px] sm:text-xs lg:text-xs font-heading font-bold text-background">
                         {index + 1}
                       </span>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-heading font-bold text-primary mb-3 uppercase text-center">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-heading font-bold text-primary mb-2 sm:mb-3 uppercase text-center">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-foreground/70 font-body text-center leading-relaxed flex-grow">
+                  <p className="text-xs sm:text-sm text-foreground/70 font-body text-center leading-relaxed flex-grow">
                     {step.description}
                   </p>
                 </div>

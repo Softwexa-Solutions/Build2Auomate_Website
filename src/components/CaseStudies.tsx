@@ -41,40 +41,41 @@ const CaseStudies = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {caseStudies.map((study, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative"
+              whileHover={{ y: -5 }}
             >
-              <div className="bg-background border-2 border-border p-6 sm:p-8 h-full hover:border-accent transition-all relative overflow-hidden">
+              <div className="bg-background border-2 border-border p-4 sm:p-6 lg:p-8 h-full hover:border-accent transition-all relative overflow-hidden">
                 {/* Background Accent */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 -translate-y-8 translate-x-8 rotate-45" />
+                <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-accent/5 -translate-y-6 translate-x-6 sm:-translate-y-8 sm:translate-x-8 rotate-45" />
                 
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className="w-14 h-14 bg-primary/10 flex items-center justify-center mb-6">
-                    <study.icon className="w-7 h-7 stroke-[2.5] text-primary" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 flex items-center justify-center mb-3 sm:mb-6">
+                    <study.icon className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.5] text-primary" />
                   </div>
 
                   {/* Metric */}
-                  <div className="mb-4">
-                    <div className="text-2xl sm:text-3xl font-heading font-bold text-accent mb-1 uppercase tracking-tight">
+                  <div className="mb-2 sm:mb-4">
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-accent mb-1 uppercase tracking-tight">
                       {study.metric}
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg sm:text-xl font-heading font-bold text-primary mb-3 sm:mb-4 uppercase">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-heading font-bold text-primary mb-2 sm:mb-3 lg:mb-4 uppercase">
                     {study.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-foreground/70 font-body leading-relaxed">
+                  <p className="text-foreground/70 font-body text-sm sm:text-base leading-relaxed">
                     {study.description}
                   </p>
                 </div>

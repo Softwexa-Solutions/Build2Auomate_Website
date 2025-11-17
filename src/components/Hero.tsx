@@ -61,6 +61,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm sm:text-base lg:text-lg font-heading font-bold uppercase tracking-wide group px-4 sm:px-6"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <span className="hidden sm:inline">Request Your Free Workflow Audit</span>
                 <span className="sm:hidden">Free Workflow Audit</span>
@@ -69,7 +70,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Animated Icons/Stats */}
+          {/* Right Column - Animated Icons/Stats - Responsive for all screen sizes */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -96,6 +97,41 @@ const Hero = () => {
                       {stat.value}
                     </div>
                     <div className="text-sm font-body text-foreground/70 uppercase tracking-wider">
+                      {stat.label}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+          
+          {/* Stats section for mobile and tablet - single responsive section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="lg:hidden w-full mt-8"
+          >
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
+              {[
+                { value: "10hrs+", label: "Saved Weekly" },
+                { value: "100%", label: "Custom Built" },
+                { value: "24/7", label: "Automation" },
+                { value: "ROI", label: "Guaranteed" },
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                  className="bg-card border-2 border-border p-4 sm:p-6 text-center relative overflow-hidden group hover:border-accent transition-all"
+                >
+                  <div className="absolute inset-0 bg-accent opacity-0 group-hover:opacity-10 transition-opacity" />
+                  <div className="relative z-10">
+                    <div className="text-xl sm:text-2xl font-heading font-bold text-primary mb-1 sm:mb-2">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs sm:text-sm font-body text-foreground/70 uppercase tracking-wider">
                       {stat.label}
                     </div>
                   </div>
