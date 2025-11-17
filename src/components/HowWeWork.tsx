@@ -72,8 +72,8 @@ const HowWeWork = () => {
                   <div className="w-12 h-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 bg-primary mx-auto mb-3 sm:mb-4 flex items-center justify-center relative">
                     <step.icon className="w-6 h-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 stroke-[2.5] text-primary-foreground" />
                     {/* Number Badge */}
-                    <div className="absolute -top-1 -right-1 w-6 h-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 bg-accent flex items-center justify-center">
-                      <span className="text-[10px] sm:text-xs lg:text-xs font-heading font-bold text-background">
+                    <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 lg:w-6 bg-accent flex items-center justify-center">
+                      <span className="text-[9px] font-heading font-bold text-background">
                         {index + 1}
                       </span>
                     </div>
