@@ -1,14 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Calendar, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import emailjs from "@emailjs/browser";
+import { send } from "@emailjs/browser";
 
 const ContactCTA = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Log environment variables on component mount
+  useEffect(() => {
+    console.log('EmailJS Environment Variables:', {
+      serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      serviceIdExists: !!import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      templateIdExists: !!import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      publicKeyExists: !!import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    });
+  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,8 +38,74 @@ const ContactCTA = () => {
       message: formDataObj.get("message")?.toString().trim() || "",
     };
 
-    emailjs
-      .send(
+    // Validate form data before sending
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setSubmitMessage("Please fill in all required fields.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setSubmitMessage("Please enter a valid email address.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Debug: Log the environment variables and form data
+    console.log('Service ID:', import.meta.env.VITE_EMAILJS_SERVICE_ID);
+    console.log('Template ID:', import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+    console.log('Public Key exists:', !!import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+    console.log('Form Data:', formData);
+    
+    // Check if environment variables are loaded
+    if (!import.meta.env.VITE_EMAILJS_SERVICE_ID || 
+        !import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 
+        !import.meta.env.VITE_EMAILJS_PUBLIC_KEY) {
+      console.error('Missing EmailJS environment variables:', {
+        serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      });
+      setSubmitMessage("Configuration error. Please contact the website administrator.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Validate that the service ID, template ID, and public key have the correct format
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId.startsWith('service_')) {
+      console.error('Invalid Service ID format:', serviceId);
+      setSubmitMessage("Configuration error: Invalid Service ID. Please contact the website administrator.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!templateId.startsWith('template_')) {
+      console.error('Invalid Template ID format:', templateId);
+      setSubmitMessage("Configuration error: Invalid Template ID. Please contact the website administrator.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (publicKey.length < 10) {
+      console.error('Invalid Public Key format:', publicKey);
+      setSubmitMessage("Configuration error: Invalid Public Key. Please contact the website administrator.");
+      setIsSubmitting(false);
+      return;
+    }
+    
+    // Add a timeout to prevent hanging requests
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Request timeout after 10 seconds')), 10000);
+    });
+    
+    Promise.race([
+      send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
@@ -41,17 +120,65 @@ const ContactCTA = () => {
           year: new Date().getFullYear(),
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(() => {
-        setSubmitMessage("Your message has been sent successfully!");
-        e.currentTarget.reset();
-      })
-      .catch(() => {
-        setSubmitMessage("Failed to send your message. Please try again.");
-      })
-      .finally(() => {
-        setIsSubmitting(false);
+      ),
+      timeoutPromise
+    ])
+    .then((response: any) => {
+      console.log('EmailJS Success:', response);
+      console.log('Response Status:', response.status);
+      console.log('Response Text:', response.text);
+      setSubmitMessage("Your message has been sent successfully!");
+      // Reset form using ref instead of event.currentTarget
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+    })
+    .catch((error: any) => {
+      console.error('EmailJS Error:', error);
+      console.error('Error details:', {
+        message: error.message,
+        name: error.name,
+        status: error.status,
+        response: error.response,
+        // Let's log the environment variables to check if they're loaded correctly
+        envVars: {
+          serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+          // Check if they're undefined
+          serviceIdExists: !!import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          templateIdExists: !!import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          publicKeyExists: !!import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        }
       });
+      
+      // Provide more specific error messages
+      if (error.message === 'Request timeout after 10 seconds') {
+        setSubmitMessage("Request timed out. Please check your internet connection and try again.");
+      } else if (error.status === 400) {
+        setSubmitMessage("Invalid request. Please check your input and try again.");
+      } else if (error.status === 401) {
+        setSubmitMessage("Authentication failed. Please contact the website administrator.");
+      } else if (error.status === 403) {
+        setSubmitMessage("Access denied. Please contact the website administrator.");
+      } else if (error.status === 500) {
+        setSubmitMessage("Server error. Please try again later.");
+      } else if (error.text && typeof error.text === 'string') {
+        // Handle EmailJS specific errors
+        setSubmitMessage(`Error: ${error.text}`);
+      } else if (error.message && error.message.includes('Network Error')) {
+        setSubmitMessage("Network error. Please check your internet connection and try again.");
+      } else if (error.message && error.message.includes('CORS')) {
+        setSubmitMessage("CORS error. Please contact the website administrator.");
+      } else {
+        setSubmitMessage("Failed to send your message. Please try again.");
+        // Log the full error for debugging
+        console.error('Full error object:', JSON.stringify(error, Object.getOwnPropertyNames(error)));
+      }
+    })
+    .finally(() => {
+      setIsSubmitting(false);
+    });
   };
 
   return (
@@ -112,7 +239,7 @@ const ContactCTA = () => {
                 <h3 className="text-lg sm:text-xl lg:text-2xl font-heading font-bold uppercase">Quick Inquiry</h3>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                 <Input name="user_name" placeholder="Your Name" required className="text-sm sm:text-base" />
                 <Input name="user_email" type="email" placeholder="Email Address" required className="text-sm sm:text-base" />
                 <Input name="company" placeholder="Company (Optional)" className="text-sm sm:text-base" />
