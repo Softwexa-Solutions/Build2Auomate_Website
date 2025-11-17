@@ -221,7 +221,7 @@ const ContactCTA = () => {
                 <Calendar className="w-5 h-5 sm:w-6 sm:h-6 mt-0.5 sm:mt-1 flex-shrink-0" />
                 <div className="flex-1 min-w-0">
                   <h3 className="font-heading font-bold uppercase text-sm sm:text-lg">Schedule a Call</h3>
-                  <p className="text-primary-foreground/90 text-sm sm:text-base">Book a free 30-minute consultation</p>
+                  <p className="text-primary-foreground/90 text-sm sm:text-base">Send an inquiry to book a free 30-minute consultation</p>
                 </div>
               </div>
             </div>
