@@ -24,7 +24,7 @@ const caseStudies = [
 
 const CaseStudies = () => {
   return (
-    <section className="py-12 sm:py-16 md:py-24 bg-card relative">
+    <section className="py-12 sm:py-16 md:py-24 bg-card relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

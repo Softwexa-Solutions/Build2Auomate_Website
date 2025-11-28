@@ -26,7 +26,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-12 sm:py-16 md:py-24 bg-card relative">
+    <section className="py-12 sm:py-16 md:py-24 bg-card relative overflow-hidden">
       {/* Geometric Background */}
       <div className="absolute top-0 right-0 w-32 h-32 sm:w-64 sm:h-64 border border-border/30 rotate-12 opacity-50" />
 
