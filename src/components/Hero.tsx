@@ -38,8 +38,8 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
                 AUTOMATE.<br />
-                ACCELERATE.<br />
-                OWN YOUR WORKFLOW.
+                VISUALIZE.<br />
+                ACCELERATE.
               </motion.h1>
               
               <motion.p
@@ -48,7 +48,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                Stop wasting time on repetitive tasks. We build custom tech solutions and workflow automations that eliminate manual work and power your business growth.
+                We build custom tech solutions, workflow automations, and high-fidelity 3D simulations that power your business growth.
               </motion.p>
             </div>
 

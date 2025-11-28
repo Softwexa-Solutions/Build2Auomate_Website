@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code, Globe, Workflow, User, Zap } from "lucide-react";
+import { Code, Globe, Workflow, Box } from "lucide-react";
 
 const services = [
   {
@@ -18,9 +18,9 @@ const services = [
     description: "Connect your tools and eliminate repetitive tasks. Save hours every week with intelligent automation.",
   },
   {
-    icon: Zap,
-    title: "Integration Solutions",
-    description: "Seamlessly connect your existing tools and platforms. One unified system that works for you.",
+    icon: Box,
+    title: "Industrial 3D Visualization",
+    description: "Turn complex CAD data into photorealistic 3D animations. We use Blender to create high-fidelity simulations for technical training, product marketing, and process visualization.",
   },
 ];
 
@@ -29,7 +29,7 @@ const Services = () => {
     <section className="py-12 sm:py-16 md:py-24 bg-card relative">
       {/* Geometric Background */}
       <div className="absolute top-0 right-0 w-32 h-32 sm:w-64 sm:h-64 border border-border/30 rotate-12 opacity-50" />
-      
+
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

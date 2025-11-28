@@ -28,6 +28,14 @@ const FAQ = () => {
       answer: "Yes, integration is one of our specialties. We can connect your existing tools and platforms to create a unified system that works seamlessly for your business operations."
     },
     {
+      question: "What is Industrial 3D Visualization?",
+      answer: "Industrial 3D Visualization transforms complex technical data (CAD files, engineering schematics) into photorealistic 3D animations and renderings. This helps in clearly communicating product features, assembly processes, and technical concepts that are difficult to explain with traditional video or text."
+    },
+    {
+      question: "How can 3D visualization help my business?",
+      answer: "3D visualization accelerates sales cycles by showcasing products before they are manufactured, improves training effectiveness with immersive simulations, and enhances marketing materials with high-fidelity visuals that stand out from competitors."
+    },
+    {
       question: "What industries do you typically work with?",
       answer: "We work with a diverse range of industries including e-commerce, healthcare, finance, real estate, manufacturing, and professional services. Our solutions are adaptable to any industry's unique requirements."
     },
@@ -41,7 +49,7 @@ const FAQ = () => {
     <section className="py-12 sm:py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Geometric Elements */}
       <div className="absolute top-20 left-4 sm:left-10 w-36 h-36 sm:w-72 sm:h-72 border-2 border-border/20 -rotate-12" />
-      
+
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

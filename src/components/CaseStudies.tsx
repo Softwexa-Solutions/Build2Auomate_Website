@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { TrendingUp, Clock, DollarSign } from "lucide-react";
+import { TrendingUp, Clock, DollarSign, Box } from "lucide-react";
 
 const caseStudies = [
   {
@@ -15,10 +15,10 @@ const caseStudies = [
     description: "Custom reporting dashboard automatically compiles data from multiple sources, delivering real-time financial insights.",
   },
   {
-    icon: TrendingUp,
-    title: "Marketing Campaign Automation",
-    metric: "3x Lead Conversion",
-    description: "Integrated CRM and email automation workflow that nurtures leads automatically, tripling conversion rates.",
+    icon: Box,
+    title: "Industrial Product Visualization",
+    metric: "40% Faster Sales Cycle",
+    description: "High-fidelity 3D product simulations allowed sales teams to demonstrate complex features remotely, significantly reducing sales cycle time.",
   },
 ];
 
@@ -37,7 +37,7 @@ const CaseStudies = () => {
             Real-World Impact
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto font-body px-4">
-            See how we've helped businesses eliminate bottlenecks and scale efficiently.
+            See how we've helped businesses eliminate bottlenecks, visualize complex products, and scale efficiently.
           </p>
         </motion.div>
 
@@ -55,7 +55,7 @@ const CaseStudies = () => {
               <div className="bg-background border-2 border-border p-4 sm:p-6 lg:p-8 h-full hover:border-accent transition-all relative overflow-hidden">
                 {/* Background Accent */}
                 <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-accent/5 -translate-y-6 translate-x-6 sm:-translate-y-8 sm:translate-x-8 rotate-45" />
-                
+
                 <div className="relative z-10">
                   {/* Icon */}
                   <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 flex items-center justify-center mb-3 sm:mb-6">
